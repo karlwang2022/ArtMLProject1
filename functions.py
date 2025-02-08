@@ -76,10 +76,9 @@ def split_article(article, n):
         res.append(portion)
     return res
 
-"""
+
 userInput = input("Enter a search query to this database: ")
 testHeadlines = get_headlines(userInput, 5)
 print(testHeadlines)
 userInput = input("Enter the number of the headline you want to read: ")
 print(get_article(testHeadlines[int(userInput)-1][0], testHeadlines[int(userInput)-1][1]))
-"""
