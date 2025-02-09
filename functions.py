@@ -17,6 +17,11 @@ put the headline in brackets like <headline>.
 query4 = """
 Generate a news article based on the following headline and news genres.
 """
+query5 = """
+You are receiving a portion of a news article. Please write a concise text prompt for a news image
+inserted in the article after this portion, your response should be less than 20 words.
+"""
+
 
 
 # Write a function that takes a string and returns a list of new genres by identifying <> tags
@@ -76,9 +81,27 @@ def split_article(article, n):
         res.append(portion)
     return res
 
+# Write a function that given an article portion, returns a text prompt for news image
+def get_image_prompt(portion):
+    portion = "Article portion: " + portion
+    result = ask_question(query5 + portion)
+    return result
+
+# Write a function that given a text prompt, returns an image in URL format
+def get_image(prompt):
+    return request_image(prompt)
 
 userInput = input("Enter a search query to this database: ")
 testHeadlines = get_headlines(userInput, 5)
 print(testHeadlines)
 userInput = input("Enter the number of the headline you want to read: ")
-print(get_article(testHeadlines[int(userInput)-1][0], testHeadlines[int(userInput)-1][1]))
+testArticle = get_article(testHeadlines[int(userInput)-1][0], testHeadlines[int(userInput)-1][1])
+
+
+testPortions = split_article(testArticle, 3)
+testPrompts = [get_image_prompt(portion) for portion in testPortions]
+testImages = [get_image(prompt) for prompt in testPrompts]
+testNewsFormat = list(zip(testPortions,testImages, testPrompts))
+
+print(testNewsFormat)
+

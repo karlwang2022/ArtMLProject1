@@ -24,3 +24,4 @@ def request_image(prompt):
         n = 1,
     )
     return response.data[0].url
+
