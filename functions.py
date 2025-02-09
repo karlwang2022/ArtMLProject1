@@ -91,6 +91,8 @@ def get_image_prompt(portion):
 def get_image(prompt):
     return request_image(prompt)
 
+
+"""
 userInput = input("Enter a search query to this database: ")
 testHeadlines = get_headlines(userInput, 5)
 print(testHeadlines)
@@ -105,3 +107,4 @@ testNewsFormat = list(zip(testPortions,testImages, testPrompts))
 
 print(testNewsFormat)
 
+"""	
