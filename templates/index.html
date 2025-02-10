@@ -15,7 +15,7 @@
         <h2>News Headlines:</h2>
         <ul>
             {% for headline in headlines %}
-                <li><a href="/article?id={{ headline.id }}">{{ headline.title }}</a></li>
+                <li><a href="/article?id={{ headline.id }}&additional_data={{ additional_data }}">{{ headline.title }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}

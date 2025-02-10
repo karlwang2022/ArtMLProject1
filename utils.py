@@ -26,14 +26,11 @@ def fetch_headlines(query):
         title = tuple_to_string(headlines[i])
         dict = {'id': id, 'title': title}
         res.append(dict)
-    return res
+    return res, headlines
 
-def fetch_article_content(article_id):
-    articles = {
-        1: 'Full content of article 1',
-        2: 'Full content of article 2',
-        3: 'Full content of article 3',
-        4: 'Full content of article 4',
-        5: 'Full content of article 5'
-    }
-    return articles.get(int(article_id), 'Article not found')
+def fetch_article_content(article_id, headlines):
+    index = int(article_id) - 1
+    if index < 0 or index >= len(headlines):
+        return "Invalid article ID"
+    article = get_article(headlines[index][0], headlines[index][1])
+    return article
