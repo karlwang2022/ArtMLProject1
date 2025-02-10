@@ -1,6 +1,8 @@
 from openaiTest import *
 import re
 import random
+import io
+from PIL import Image
 
 query1 = """
 Please generate 20 news genre/type/feature/trait eg. sports, politics, entertainment,
