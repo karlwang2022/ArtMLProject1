@@ -13,6 +13,12 @@ def search():
     headlines = fetch_headlines(query)
     return render_template('index.html', headlines=headlines)
 
+@app.route('/article', methods=['GET'])
+def article():
+    article_id = request.args.get('id')
+    article_content = fetch_article_content(article_id)
+    return render_template('article.html', article=article_content)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
