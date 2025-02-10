@@ -19,7 +19,7 @@ def tuple_to_string(data_tuple):
     return result_string
 
 def fetch_headlines(query):
-    headlines = get_headlines(query, 5)
+    headlines = get_headlines(query, 20)
     res = []
     for i in range(len(headlines)):
         id = i + 1

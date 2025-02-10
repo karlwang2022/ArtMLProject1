@@ -17,10 +17,10 @@ def ask_question(question):
 
 def request_image(prompt):
     response = client.images.generate(
-        model = "dall-e-2",
+        model = "dall-e-3",
         prompt = prompt,
-        size = "1024x1024",
-        quality = "standard",
+        size = "1792x1024",
+        quality = "hd",
         n = 1,
     )
     return response.data[0].url

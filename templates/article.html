@@ -4,16 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        .footer {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+            margin-top: -10px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
-    <h1>News Article</h1>
-    <div>
-        {% for part in article_content %}
-            <p>{{ part[0] }}</p>
-            <img src={{part[1]}} alt="Image">
-            <p>{{ part[2] }}</p>
-        {% endfor %}
+    <div class="container">
+        <h1>News Article</h1>
+        <div>
+            {% for part in article_content %}
+                <p>{{ part[0].replace('\n', '<br>')|safe }}</p>
+                <img src="{{ part[1] }}" alt="Image">
+                <p class="footer">{{ part[2] }}</p>
+            {% endfor %}
+        </div>
+        <a href="/">Back to Home</a>
     </div>
-    <a href="/">Back to Home</a>
 </body>
 </html>
