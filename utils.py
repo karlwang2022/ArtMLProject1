@@ -33,4 +33,9 @@ def fetch_article_content(article_id, headlines):
     if index < 0 or index >= len(headlines):
         return "Invalid article ID"
     article = get_article(headlines[index][0], headlines[index][1])
-    return article
+    portions = split_article(article, 3)
+    prompts = [get_image_prompt(portion) for portion in portions]
+    images = [get_image(prompt) for prompt in prompts]
+    res =  list(zip(portions, images, prompts))
+    print(res)
+    return res

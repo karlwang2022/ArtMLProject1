@@ -8,7 +8,11 @@
 <body>
     <h1>News Article</h1>
     <div>
-        {{ article }}
+        {% for part in article_content %}
+            <p>{{ part[0] }}</p>
+            <img src={{part[1]}} alt="Image">
+            <p>{{ part[2] }}</p>
+        {% endfor %}
     </div>
     <a href="/">Back to Home</a>
 </body>

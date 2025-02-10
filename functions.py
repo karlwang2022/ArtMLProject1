@@ -3,6 +3,7 @@ import re
 import random
 import io
 from PIL import Image
+from flask import Flask, render_template, request, send_file, session
 
 query1 = """
 Please generate 20 news genre/type/feature/trait eg. sports, politics, entertainment,
@@ -91,7 +92,9 @@ def get_image_prompt(portion):
 
 # Write a function that given a text prompt, returns an image in URL format
 def get_image(prompt):
-    return request_image(prompt)
+    res = request_image(prompt)
+    assert(isinstance(res, str))
+    return str(res)
 
 
 """
@@ -109,4 +112,4 @@ testNewsFormat = list(zip(testPortions,testImages, testPrompts))
 
 print(testNewsFormat)
 
-"""	
+"""

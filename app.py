@@ -1,4 +1,3 @@
-from flask import Flask, render_template, request, send_file, session
 from utils import *
 
 app = Flask(__name__)
@@ -20,7 +19,7 @@ def article():
     article_id = request.args.get('id')
     additional_data = session.get('additional_data')
     article_content = fetch_article_content(article_id, additional_data)
-    return render_template('article.html', article=article_content)
+    return render_template('article.html', article_content=article_content)
 
 
 if __name__ == '__main__':
