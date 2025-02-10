@@ -11,5 +11,13 @@
         <input type="text" name="query" placeholder="Search...">
         <button type="submit">Search</button>
     </form>
+    {% if headlines %}
+        <h2>News Headlines:</h2>
+        <ul>
+            {% for headline in headlines %}
+                <li>{{ headline }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>

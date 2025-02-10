@@ -10,9 +10,9 @@ def index():
 @app.route('/search', methods=['GET'])
 def search():
     query = request.args.get('query')
-    # Generate dynamic content based on the query
-    image = generate_image(query)
-    return send_file(image, mimetype='image/png')
+    headlines = fetch_headlines(query)
+    return render_template('index.html', headlines=headlines)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
